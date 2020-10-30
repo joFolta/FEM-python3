@@ -49,6 +49,9 @@ Slides Website: https://practical.learnpython.dev/
 - False
 - list
 - str
+- \backslash to ignore ("escape character")
+- \n new line
+- \t new tab
 
 ### Helpful REPL (>>>) methods:
 - type() - checks type of a variable
@@ -62,7 +65,7 @@ Slides Website: https://practical.learnpython.dev/
     - space to scroll down
     - q to exit
 
-### Numbers in Python
+### Numbers/Math in Python
 - integers
   - type(5) 
   - int(5.2) => 5
@@ -80,3 +83,48 @@ Slides Website: https://practical.learnpython.dev/
 - round
   - round(3.1) => 3
   - round(3.9) => 4
+
++= increment
+-= decrement
+
+### Print()
+- print("hi)
+  - hi
+- print("hi", 5)
+  - hi 5
+- concatenation
+  - "hi" + "bye"
+    - "hibye"
+
+### F Strings (format strings)
+- name = "Johann"
+- f"Hi, my name is {name}."
+=> "Hi, my name is Johann."
+- string.replace("this", "that")
+- **However, strings are immutable.** 
+- Thus, to save the change you must save the result to a new variable. 
+
+### Lists
+- **Lists are mutable - can be changed.** 
+- [ ] - declared with square brakcets
+- names = ["Johann", "Sam", "Suzie",]
+  - trailing commas are encourages
+- methods:
+  - len(list)
+  - list[index]
+  - sorted(list)
+    - **this does NOT change original list**
+    - optionally, reverse list
+      - sorted(list, reverse=True)
+  - list.sort()
+      - **this DOES change original list**
+  - list.append(12345)
+    - adds to end of list
+  - list.insert(position_to_insert, 55)
+    - list.insert(0, 55)
+    - inserts 55 at position 0 (beginning of list)
+  - item **in** list
+    - returns True or False
+  - To find out more about list methods
+    - dir(list) - finds all methods
+    - help(list.count) - info about a specific method
