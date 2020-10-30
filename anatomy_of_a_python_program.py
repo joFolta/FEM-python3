@@ -20,7 +20,7 @@ def create_query(languages, min_stars=50000):
     # a sample query looks like: "stars:>50 language:python language:javascript"
     return query
 
-
+# NOTE: using default arguments for sort and order as nothing was passed for the 2nd and 3rd params
 def repos_with_most_stars(languages, sort="stars", order="desc"):
     query = create_query(languages)
     # NOTE: defining dictionary
@@ -37,6 +37,7 @@ def repos_with_most_stars(languages, sort="stars", order="desc"):
 
 
 if __name__ == "__main__":
+    # NOTE: we want to see results for these languages from the Github repo search API
     languages = ["python", "javascript", "ruby"]
     results = repos_with_most_stars(languages)
 
