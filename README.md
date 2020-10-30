@@ -109,13 +109,33 @@ Slides Website: https://practical.learnpython.dev/
   - from pprint import pprint
   - adds line breaks when commas are there (\n)
 
-### F Strings (format strings)
+### Strings
+- **F Strings (format strings)**
 - name = "Johann"
 - f"Hi, my name is {name}."
 => "Hi, my name is Johann."
 - string.replace("this", "that")
 - **However, strings are immutable.** 
 - Thus, to save the change you must save the result to a new variable. 
+- String.split(what_to_split_with)
+  - my_string = "Nina,Max,Mark"
+  - my_string.split(",")
+  - my_string => ['Nina', 'Max', 'Mark']
+- String.join()
+  - can add custom strings (ie. " - ") betwen the parts being joined
+- #### Slicing
+  - my_string = "Hello, world!"
+    - my_string[7:12] # from 7 to 12
+    - 'world'
+  - my_string[:12]
+    - start at 0
+  - my_string[7:]
+    - go to the end
+  - quick copy of entire string or list
+    - my_string[:]
+  - start from the end
+    - my_string[-1]
+    - my_string[-1:-6]
 
 ### Lists
 - **Lists are mutable - can be changed.** 
@@ -145,9 +165,16 @@ Slides Website: https://practical.learnpython.dev/
 
 ### Tuple
 - **Tuples are immutable - can NOT be changed.** 
+- can’t change them once they’ve been created. Tuples are great for moving data around in a lightweight way, because you can *unpack them easily into multiple variables*.
 - order stays the same
-- can't change the items
+- can't change/reassign the items
+  - my_tuple[0] = "new value" => ERROR
 - defined with ( )
+  - person = ('Jim', 29, 'Austin, TX')
+    - name, age, hometown = person
+    - name => 'Jim"
+    - age => 29
+    - hometown => 'Austin, TX'
 - my_tup = ()
 - type(my_tup)
   - <class 'tuple'>
@@ -158,11 +185,19 @@ Slides Website: https://practical.learnpython.dev/
   - tuup = ("hi",)
   - type(tuup) => <class 'tuple'>
 - matching left side items with right side items
-- name, age, subject, _ = student
-  - _ to indicate missing item
+- *unpacking to variables*
+  - name, age, subject, _ = student
+    - _ placeholder to indicate missing item
+    - or else, ERROR: too many errors to unpack
 
 ### Sets
-- **Sets store immutable types in an unsorted way** 
+- **Sets are mutable; they store immutable types in an unsorted way** 
+- Sets are a great data type for storing unique data - you can only have one of any given object in a set. Sets are **unordered** (*can't access by index*), thus you can’t access them with [] indexing syntax, but they do have some handy functions.
+- A set is a mutable datatype that allows you to store immutable types in an unsorted way. Sets are mutable because you can add and remove items from them. They can contain immmutable items, like tuples and other primitive types, but not lists, sets, or dictionaries which are themselves mutable.
+Unlike a list or a tuple, a set can only contain one instance of a unique item. There are no duplicates allowed.
+The benefits of a set are: very fast membership testing along with being able to use powerful set operations, like union and intersection.
+- While lists are generally used to store collections of similar items together, tuples, by contrast, can be used to contain a snapshot of data.
+- A set is a mutable datatype that allows you to store immutable types in an unsorted way. 
 - sets are fast
 - fun hash function
 - doesn't have to check every item to find it
@@ -179,6 +214,7 @@ Slides Website: https://practical.learnpython.dev/
 - my_set.discard("Nina")
   - removes "Nina" from set
 - my_set.update(add items from here)
+- my_set.add(4)
 
 ### Dictionaries
 - stores key: value pairs
@@ -187,6 +223,7 @@ Slides Website: https://practical.learnpython.dev/
   - tuples can be keys
 - fast item lookup by key
 - dictionaries like sets have { }, but also have : (between key : value)
+- no order, can't use index
 - however, the values are mutable
 - my_dict[key]
   - my_dict["hair_color"]
@@ -203,6 +240,12 @@ Slides Website: https://practical.learnpython.dev/
     - returns only values
   - **dic.items()**
     - key AND value pairs
+  - deleting keys from dictionaries
+    - del my_dict["hair_color"]
+    - prefered method, is dict.pop()
+      - you can also set a default return, if not found (prevents an exception)
+  - "hair_color" in my_dict
+    - returns True or False
 
 ### Functions
 - def this_is_a_function(params): 
@@ -211,7 +254,11 @@ Slides Website: https://practical.learnpython.dev/
   - function add_numbers(x, y=10):
   - x is required, but y is optional b/c it has default
 - you can also specify which argument you are inputing when calling a function
-  - 
+  - You can also use the argument's keyword. This helps with readability
+  - def calculate_numbers(x, y, operation="add"):
+      ...
+  - calculate_numbers(2, 3) // argument with default param is optional
+  - calculate_numbers(x=2, y=3, operation="subtract")
 - **don't use mutable types as default arguments**
   - def do_stuff(my_list=[]):
       - my_list.append("stuff")
@@ -222,18 +269,31 @@ Slides Website: https://practical.learnpython.dev/
   - call function: do_stuff() => ["stuff", "stuff",, "stuff", "stuff",]
   - *this is not what we intended*
 
-  ### Booleans
-  - 0 is False
-  - all other numbers including -negative numbers are True
-  - empty containers are False (eg. [])
-    - filled containers are True (eg. [1])
-  - None is False
-  - bool() - checks for truthiness
-    - bool(None) => Falses
-    - bool(123) => True
+### Mutable or Immutable?
+- use hash() function to check
+- if immutable, hash() => no error
+  - hash(21) => works, b/c immutable
+  - hash(my_tuple) => works, b/c immutable
+- if mutable (can change), hash() => ERROR
+  - hash([1, 2, 3]) => ERROR
+  - hash({3, 4}) => ERROR
+
+### Booleans
+- 0 is False
+- all other numbers including -negative numbers are True
+- empty containers are False (eg. [])
+  - filled containers are True (eg. [1])
+- None is False
+- use "is" for None, False, and True
+  - don't use == for these
+- bool() - checks for truthiness
+  - bool(None) => Falses
+  - bool(123) => True
 - == is equality (checking for values, not identity)
   - (similar to === in JS), **"is"** checks for identity (do they point to the same place in memory?)
 - != not equals
+- use 5 > 3
+- don't use 5 > 3 == True
 
 ### and, or. not
 - and
@@ -253,3 +313,64 @@ Slides Website: https://practical.learnpython.dev/
     - **if b:**
 - if:
   else:
+
+### loops
+- **for ... in:**
+  - code bock here
+- for num in **range**(3, 7):
+  - print(num) 
+    - 3
+    - 4
+    - 5
+    - 6
+- **enumerate**
+  - 
+- looping though dictionary
+  - my_dict.items()
+
+## Practical Applications
+### List Comprehensions
+- List comprehensions are a unique way to create lists in Python. A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses. The expressions can be any kind of Python object.
+
+List comprehensions will commonly take the form of [<value> for <vars> in <iter>].
+- square brackets b/c it's a list
+- [what_i_want for item in list]
+- [len(name) for name in names]
+- my_new_list = [len(name) for name in names]
+
+- (optionally) add a condition to the end
+- my_new_list = [len(name) for name in names CONDITION]
+- my_new_list = [len(name) for name in names if len(name) % 2 == 0 ]
+  - (only add to new list if name length is even)
+
+### Generator Comprehension
+- A generator comprehension looks just like a list comprehension, except we use parentheses instead of brackets.
+- Generator expressions are a more advanced concept. A generator is a type of iterable object - like a list, you can iterate through each element - however, unlike a list, generators evaluate elements on demand, instead of assembling them all at once.
+- Not stored in memory; gets used up
+
+### Working with Files
+- different modes for opening files
+- cheatsheet: https://practical.learnpython.dev/05_practical_applications/40_working_with_files/
+- my_file = open("my_file.txt") // by default read mode
+- my_file = open("my_file.txt", "w") // write mode
+- my_file = open("my_file.txt", "a") // add to end if it exists
+- need to call close() after finished so it closes it from memory and doesn't lock it up
+  - solution: Context Managers ~ try/catch block
+  - with open("my_file.text") as my_file:
+    - contents = my_file.read()
+  - no need to close anymore
+- list of dictionaries
+  - import json
+  - with open("cities.json") as cities_file:
+    - cities_data = json.load(cities_file)
+    - print(cities_data)
+
+    - => [{'name': 'New York', 'pop': 8550405}, {'name': 'Los Angeles', 'pop': 3971883}, {'name': 'Chicago', 'pop': 2720546}, {'name': 'Houston', 'pop': 2296224}, {'name': 'Philadelphia', 'pop': 1567442}]
+
+    - from pprint import pprint
+    - pprint(cities_data)
+    - => [{'name': 'New York', 'pop': 8550405},
+    -     {'name': 'Los Angeles', 'pop': 3971883},
+    -     {'name': 'Chicago', 'pop': 2720546},
+    -     {'name': 'Houston', 'pop': 2296224},
+    -     {'name': 'Philadelphia', 'pop': 1567442}]
