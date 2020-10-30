@@ -105,6 +105,9 @@ Slides Website: https://practical.learnpython.dev/
 - concatenation
   - "hi" + "bye"
     - "hibye"
+- **pretty print** - module (included in standard library, but must bring in)
+  - from pprint import pprint
+  - adds line breaks when commas are there (\n)
 
 ### F Strings (format strings)
 - name = "Johann"
@@ -116,7 +119,7 @@ Slides Website: https://practical.learnpython.dev/
 
 ### Lists
 - **Lists are mutable - can be changed.** 
-- [ ] - declared with square brakcets
+- [ square brackets ] - declared with square brakcets
 - names = ["Johann", "Sam", "Suzie",]
   - trailing commas are encourages
 - methods:
@@ -202,3 +205,51 @@ Slides Website: https://practical.learnpython.dev/
     - key AND value pairs
 
 ### Functions
+- def this_is_a_function(params): 
+  - code block here
+- required arguments vs default arguments
+  - function add_numbers(x, y=10):
+  - x is required, but y is optional b/c it has default
+- you can also specify which argument you are inputing when calling a function
+  - 
+- **don't use mutable types as default arguments**
+  - def do_stuff(my_list=[]):
+      - my_list.append("stuff")
+      - return my_list
+  - call function: do_stuff() => ["stuff"]
+  - call function: do_stuff() => ["stuff", "stuff",]
+  - call function: do_stuff() => ["stuff", "stuff", "stuff",]
+  - call function: do_stuff() => ["stuff", "stuff",, "stuff", "stuff",]
+  - *this is not what we intended*
+
+  ### Booleans
+  - 0 is False
+  - all other numbers including -negative numbers are True
+  - empty containers are False (eg. [])
+    - filled containers are True (eg. [1])
+  - None is False
+  - bool() - checks for truthiness
+    - bool(None) => Falses
+    - bool(123) => True
+- == is equality (checking for values, not identity)
+  - (similar to === in JS), **"is"** checks for identity (do they point to the same place in memory?)
+- != not equals
+
+### and, or. not
+- and
+  - are both values True?
+- or
+  - is at least one True?
+- not
+  - the opposite
+  - negates what you have
+
+### if statements
+- if 5 > 3:
+    print("always print")
+- **if b == True:**
+  - don't do this!
+  - do this instead:
+    - **if b:**
+- if:
+  else:
