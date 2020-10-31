@@ -2,9 +2,9 @@
 🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
 ![Frontend Masters Logo](img/FrontendMastersLogo.png)
 🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
-Project created from Frontend Masters workshop: 
-"A Practical Guide to Python - An immersive hands-on Python Course" 
--by *Nina Zakharenko*
+*Project created from Frontend Masters workshop:*
+*"A Practical Guide to Python - An immersive hands-on Python Course"*
+*-by Nina Zakharenko*
 
 Slides Website: https://practical.learnpython.dev/
 
@@ -324,28 +324,27 @@ The benefits of a set are: very fast membership testing along with being able to
     - 5
     - 6
 - **enumerate**
-  - 
 - looping though dictionary
   - my_dict.items()
 
 ## Practical Applications
 ### List Comprehensions
-- List comprehensions are a unique way to create lists in Python. A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses. The expressions can be any kind of Python object.
+List comprehensions are a unique way to create lists in Python. A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses. The expressions can be any kind of Python object.
 
-List comprehensions will commonly take the form of [<value> for <vars> in <iter>].
-- square brackets b/c it's a list
-- [what_i_want for item in list]
-- [len(name) for name in names]
-- my_new_list = [len(name) for name in names]
+- List comprehensions will commonly take the form of [<value> for <vars> in <iter>].
+  - square brackets b/c it's a list
+  - [what_i_want for item in list]
+  - [len(name) for name in names]
+  - my_new_list = [len(name) for name in names]
 
-- (optionally) add a condition to the end
-- my_new_list = [len(name) for name in names CONDITION]
-- my_new_list = [len(name) for name in names if len(name) % 2 == 0 ]
-  - (only add to new list if name length is even)
+  - (optionally) add a condition to the end
+  - my_new_list = [len(name) for name in names CONDITION]
+  - my_new_list = [len(name) for name in names if len(name) % 2 == 0 ]
+    - (only add to new list if name length is even)
 
 ### Generator Comprehension
-- A generator comprehension looks just like a list comprehension, except we use parentheses instead of brackets.
-- Generator expressions are a more advanced concept. A generator is a type of iterable object - like a list, you can iterate through each element - however, unlike a list, generators evaluate elements on demand, instead of assembling them all at once.
+A generator comprehension looks just like a list comprehension, except we use parentheses instead of brackets.
+Generator expressions are a more advanced concept. A generator is a type of iterable object - like a list, you can iterate through each element - however, unlike a list, generators evaluate elements on demand, instead of assembling them all at once.
 - Not stored in memory; gets used up
 
 ### Working with Files
@@ -355,9 +354,9 @@ List comprehensions will commonly take the form of [<value> for <vars> in <iter>
 - my_file = open("my_file.txt", "w") // write mode
 - my_file = open("my_file.txt", "a") // add to end if it exists
 - need to call close() after finished so it closes it from memory and doesn't lock it up
-  - solution: Context Managers ~ try/catch block
-  - with open("my_file.text") as my_file:
-    - contents = my_file.read()
+  - solution: **Context Managers** ~ try/catch block
+  - **with open("my_file.text") as my_file:**
+    - **contents = my_file.read()**
   - no need to close anymore
 - list of dictionaries
   - import json
